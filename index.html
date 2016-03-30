@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pushwoosh</title>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.css">
+
+  </head>
+  <body>
+    <app></app>
+    <script src="dist/build.js"></script>
+  </body>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  	<script type="text/javascript" src="bower_components/AdminLTE/dist/js/app.js"></script>
+  	<script type="text/javascript">
+  (function (exports) {
+
+	'use strict';
+
+	var STORAGE_KEY = 'todos-vuejs';
+
+	exports.todoStorage = {
+		fetch: function () {
+			return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+		},
+		save: function (todos) {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+		}
+	};
+	})(window);
+
+	var STORAGE_KEY = 'todos-vuejs';
+	localStorage.getItem(STORAGE_KEY) || '[]'
+	  </script>
+	  <script type="text/javascript">
+	  function notify(text){
+	  $.ajax({
+	    type: "POST",
+	    url: "https://cp.pushwoosh.com/json/1.3/createMessage",
+	    data: JSON.stringify({
+	        "request": {
+	            "application": "4FC89B6D14A655.46488481",
+	            "auth": "mTdns0j6qLYPa/A5htmD46xVyoxdVQfPBz7NRqYYHz9PhvKXgJtOkAY+yo0YTXDEoztQAJFY0JmXnd89tf59",
+	            "notifications": [{
+	                "send_date": "now",
+	                "ignore_user_timezone": true,
+	                "content": "Voy a celebrar san valenentín al estilo Han...     ...Solo"
+	            }]
+	        }
+	    }),
+	    dataType: "json"
+		}).done(function(data) {
+		    console.log(data);
+		});
+	}
+  </script>
+</html>
+

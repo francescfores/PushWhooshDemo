@@ -1,0 +1,15 @@
+// Instanciem 2 objectes en JAVA. El client (Customer) té una adreça (Address)
+Address addr = new Address("1 First Street", "San Jose");
+Customer cust = new Customer("Michael",addr,"4089999999");
+try{
+// Obrim el fitxer que conté la BD representada per un ObjectContainer
+File file = new File("customers.yap");
+String fullPath = file.getAbsolutePath();
+ObjectContainer db = Db4oEmbedded.openFile(fullPath);
+// Guardem l’objecte client, que a la vegada conté un objecte adreça a una de les seues propietats
+db.store(cust); //cust és un objecte de la classe Customer
+}
+finally{
+// tanquem la base de dades
+db.close();
+}
